@@ -27,16 +27,22 @@ class GuessingGame {
 		} while (max < 1);
 
 		int ans = (int) (Math.random() * max) + 1;
-		print("Answer is : " + ans);
-		print("Game start ! Guess a number");
+		// print("Answer is : " + ans);
+		print("Game start ! Guess a number in 5 trials");
 
 		int guess;
-		do {
+		for (int i = 0; i < 5; i++) {
+			print("Guess " + i + " :");
 			do {
 				guess = sc.nextInt();
 			} while (guess > max);
 			guess = verify(guess, ans);
-		} while (guess != 1);
+			if (guess == 1) {
+				sc.close();
+				return;
+			}
+		}
+		print("You have exhausted the chances");
 
 		sc.close();
 
